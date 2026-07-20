@@ -6,6 +6,8 @@ import Animales from './pages/Animales'
 import AnimalForm from './pages/AnimalForm'
 import Partos from './pages/Partos'
 import PartoForm from './pages/PartoForm'
+import Vacunas from './pages/Vacunas'
+import VacunaForm from './pages/VacunaForm'
 
 // Protege rutas que requieren autenticación
 function RutaProtegida({ children }) {
@@ -80,6 +82,33 @@ export default function App() {
         element={
           <RutaProtegida>
             <PartoForm />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/vacunas"
+        element={
+          <RutaProtegida>
+            <Vacunas />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/vacunas/nueva"
+        element={
+          <RutaProtegida>
+            <VacunaForm />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/vacunas/:id/editar"
+        element={
+          <RutaProtegida>
+            <VacunaForm />
           </RutaProtegida>
         }
       />
