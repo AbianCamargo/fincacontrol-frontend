@@ -8,6 +8,8 @@ import Partos from './pages/Partos'
 import PartoForm from './pages/PartoForm'
 import Vacunas from './pages/Vacunas'
 import VacunaForm from './pages/VacunaForm'
+import Reproduccion from './pages/Reproduccion'
+import ReproduccionForm from './pages/ReproduccionForm'
 
 // Protege rutas que requieren autenticación
 function RutaProtegida({ children }) {
@@ -109,6 +111,33 @@ export default function App() {
         element={
           <RutaProtegida>
             <VacunaForm />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/reproduccion"
+        element={
+          <RutaProtegida>
+            <Reproduccion />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/reproduccion/nuevo"
+        element={
+          <RutaProtegida>
+            <ReproduccionForm />
+          </RutaProtegida>
+        }
+      />
+
+      <Route
+        path="/reproduccion/:id/editar"
+        element={
+          <RutaProtegida>
+            <ReproduccionForm />
           </RutaProtegida>
         }
       />
