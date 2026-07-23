@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import { reproduccionService } from '../services/reproduccion'
+import { formatearFecha } from '../utils/formato'
 
 export default function Reproduccion() {
   const [registros, setRegistros] = useState([])
@@ -82,7 +83,7 @@ export default function Reproduccion() {
                     <td className="px-4 py-2 font-semibold text-slate-800">
                       #{registro.animal?.numero_identificacion}
                     </td>
-                    <td className="px-4 py-2 text-slate-600">{registro.fecha_celo?.split('T')[0]}</td>
+                    <td className="px-4 py-2 text-slate-600">{formatearFecha(registro.fecha_celo)}</td>
                     <td className="px-4 py-2">
                       {registro.esta_prenada ? (
                         <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">Sí</span>
@@ -91,7 +92,7 @@ export default function Reproduccion() {
                       )}
                     </td>
                     <td className="px-4 py-2 text-slate-600">
-                      {registro.fecha_probable_parto?.split('T')[0] || '—'}
+                      {formatearFecha(registro.fecha_probable_parto)}
                     </td>
                     <td className="px-4 py-2 text-slate-600">
                       {registro.toro ? `#${registro.toro.numero_identificacion}` : '—'}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import { partosService } from '../services/partos'
+import { formatearFecha } from '../utils/formato'
 
 export default function Partos() {
   const [partos, setPartos] = useState([])
@@ -55,7 +56,7 @@ export default function Partos() {
                     <td className="px-4 py-2 font-semibold text-slate-800">
                       #{parto.madre?.numero_identificacion}
                     </td>
-                    <td className="px-4 py-2 text-slate-600">{parto.fecha_parto?.split('T')[0]}</td>
+                    <td className="px-4 py-2 text-slate-600">{formatearFecha(parto.fecha_parto)}</td>
                     <td className="px-4 py-2">
                       <BadgeResultado resultado={parto.resultado} />
                     </td>

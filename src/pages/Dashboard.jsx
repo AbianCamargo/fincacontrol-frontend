@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import api from '../services/api'
+import { formatearFecha } from '../utils/formato'
 
 export default function Dashboard() {
   const [datos, setDatos] = useState(null)
@@ -60,7 +61,7 @@ export default function Dashboard() {
                       <span className="text-slate-800">
                         {vacuna.animal?.numero_identificacion} — {vacuna.tipo}
                       </span>
-                      <span className="text-xs text-slate-400">{vacuna.proxima_fecha?.split('T')[0]}</span>
+                      <span className="text-xs text-slate-400">{formatearFecha(vacuna.proxima_fecha)}</span>
                     </div>
                   ))
                 )}
@@ -74,7 +75,7 @@ export default function Dashboard() {
                   datos.partos_del_mes.map(parto => (
                     <div key={parto.id} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0 text-sm">
                       <span className="text-slate-800">
-                        {parto.madre?.numero_identificacion} — {parto.fecha_parto?.split('T')[0]}
+                        {parto.madre?.numero_identificacion} — {formatearFecha(parto.fecha_parto)}
                       </span>
                       <span className={`text-xs font-semibold ${parto.resultado === 'vivo' ? 'text-green-600' : 'text-red-600'}`}>
                         {parto.resultado === 'vivo' ? 'Vivo' : 'Muerto'}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import { vacunasService } from '../services/vacunas'
+import { formatearFecha } from '../utils/formato'
 
 export default function Vacunas() {
   const [vacunas, setVacunas] = useState([])
@@ -107,8 +108,8 @@ export default function Vacunas() {
                       #{vacuna.animal?.numero_identificacion}
                     </td>
                     <td className="px-4 py-2 text-slate-600">{vacuna.tipo}</td>
-                    <td className="px-4 py-2 text-slate-600">{vacuna.fecha_aplicada?.split('T')[0]}</td>
-                    <td className="px-4 py-2 text-slate-600">{vacuna.proxima_fecha?.split('T')[0] || '—'}</td>
+                    <td className="px-4 py-2 text-slate-600">{formatearFecha(vacuna.fecha_aplicada)}</td>
+                    <td className="px-4 py-2 text-slate-600">{formatearFecha(vacuna.proxima_fecha)}</td>
                     <td className="px-4 py-2">
                       <BadgeEstado estado={calcularEstado(vacuna.proxima_fecha)} />
                     </td>
