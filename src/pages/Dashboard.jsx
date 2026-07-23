@@ -60,7 +60,7 @@ export default function Dashboard() {
                       <span className="text-slate-800">
                         {vacuna.animal?.numero_identificacion} — {vacuna.tipo}
                       </span>
-                      <span className="text-xs text-slate-400">{vacuna.proxima_fecha}</span>
+                      <span className="text-xs text-slate-400">{vacuna.proxima_fecha?.split('T')[0]}</span>
                     </div>
                   ))
                 )}
